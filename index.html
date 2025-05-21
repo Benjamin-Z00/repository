@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Click Demo</title>
+    <style></style>
+</head>
+<body>
+    <button>Click me!</button>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM fully loaded');
+        var button = document.querySelector('button');
+        console.log('Button element:', button);
+        
+        function createParagraph(){
+            console.log('Button clicked!');
+            var styleSheet = document.styleSheets[0];
+            var paragraph = document.querySelector('p');
+            if(paragraph === null){
+                paragraph = document.createElement('p');
+                paragraph.textContent = "Hello World!";
+                document.body.appendChild(paragraph);
+                console.log('Paragraph created');
+                if (styleSheet && styleSheet.insertRule) {
+                    styleSheet.insertRule('p { color:blue; font-size:1.2rem }', 0);
+                    console.log('Style applied');
+                }
+            }
+        }
+
+        button.onclick = createParagraph;
+    });
+    </script>
+</body>
+</html>
